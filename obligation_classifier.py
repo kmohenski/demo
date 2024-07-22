@@ -7,8 +7,8 @@ hf_token = st.secrets["huggingface_token"]
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-tokenizer = AutoTokenizer.from_pretrained("lejzi/activity_classifier", hf_token)
-loaded = AutoModelForSequenceClassification.from_pretrained("lejzi/activity_classifier", hf_token)
+tokenizer = AutoTokenizer.from_pretrained("lejzi/activity_classifier", token=hf_token)
+loaded = AutoModelForSequenceClassification.from_pretrained("lejzi/activity_classifier", token=hf_token)
 loaded.to(device)
 
 pipe = TextClassificationPipeline(model=loaded, tokenizer=tokenizer, return_all_scores=True)
