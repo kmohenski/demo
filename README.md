@@ -1,2 +1,3 @@
 # classifier_demo
-Quick classifier demo
+
+Quick classifier demo for classifier.
