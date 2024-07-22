@@ -9,6 +9,15 @@ def classifier(input_text):
 # # Streamlit UI
 st.title("Obligation classifier")
 
+st.write("Demo for classifiers that help lawyers parse through Obligations.")
+st.write(
+    str(
+        "Try inputing the following:\n"
+        "\"The contractor must complete the construction work by December 31st"
+        " and adhere to all safety regulations throughout the project.\""
+    )
+)
+
 # # Text input
 input_text = st.text_input("Input Text")
 
