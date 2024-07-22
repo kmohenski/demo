@@ -1,2 +1,3 @@
 transformers[torch]
 torch
+streamlit
