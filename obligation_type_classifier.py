@@ -7,15 +7,14 @@ hf_token = st.secrets["huggingface_token"]
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-tokenizer = AutoTokenizer.from_pretrained("lejzi/activity_classifier", token=hf_token)
-loaded = AutoModelForSequenceClassification.from_pretrained("lejzi/activity_classifier", token=hf_token)
+tokenizer = AutoTokenizer.from_pretrained("lejzi/category_classifier", token=hf_token)
+loaded = AutoModelForSequenceClassification.from_pretrained("lejzi/category_classifier", token=hf_token)
 loaded.to(device)
 
 pipe = TextClassificationPipeline(model=loaded, tokenizer=tokenizer, return_all_scores=True)
 
 def classify_obligation_type(obligation_text: str) -> str:
-    """Classify the sentences into categories. The sentences are classified
-    by a classifier stored in `category_classifier` directory.
+    """Classify the sentences into categories.
     There is only ever one type so we only return the best scoring type.
 
     :param obligation_text: sentence to be classified
