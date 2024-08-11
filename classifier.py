@@ -1,6 +1,6 @@
-from obligation_activity_classifier import classify_obligation_activities
+from activity_classifier import classify_activities
 from obligation_classifier import classify_obligations
-from obligation_type_classifier import classify_obligation_type
+from type_classifier import classify_type
 
 
 def prediction(input_text: str):
@@ -9,15 +9,12 @@ def prediction(input_text: str):
     # only proceed with other predictions if the obligation is classified as an obligation
     # otherwise, return the input data as is
     if obligation_prediction == "Obligation":
-        obligation_activities = classify_obligation_activities(input_text)
-        obligation_type = classify_obligation_type(input_text)
-
         return {
             "text": input_text,
             "prediction": {
                 "is_obligation_choice": obligation_prediction,
-                "obligation_category_choice": obligation_type,
-                "obligation_activity_choices": obligation_activities
+                "obligation_category_choice": classify_type(input_text),
+                "obligation_activity_choices": classify_activities(input_text)
             }
         }
     else:

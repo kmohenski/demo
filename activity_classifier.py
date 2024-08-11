@@ -13,22 +13,7 @@ loaded.to(device)
 
 pipe = TextClassificationPipeline(model=loaded, tokenizer=tokenizer, return_all_scores=True)
 
-def classify_obligation_activities(obligation_text: str) -> str:
-    """Classify the activities contained in the sentance.
-    There can be any number of activities in a sentence so we return any which score over 0.5.
-
-    :param obligation_text: sentence to be classified
-    :return: a string indicating the type of obligation
-
-    Example:
-    ```
-        [
-            'Organizing and conducting external meetings',
-            'Submitting reports/notifications',
-            'Signing/notarising'
-        ]
-    ```
-    """
+def classify_activities(obligation_text: str) -> str:
     result = pipe(obligation_text)
     output = []
 

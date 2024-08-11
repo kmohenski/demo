@@ -13,18 +13,7 @@ loaded.to(device)
 
 pipe = TextClassificationPipeline(model=loaded, tokenizer=tokenizer, return_all_scores=True)
 
-def classify_obligation_type(obligation_text: str) -> str:
-    """Classify the sentences into categories.
-    There is only ever one type so we only return the best scoring type.
-
-    :param obligation_text: sentence to be classified
-    :return: a string indicating the type of obligation
-
-    Example:
-    ```
-        'Obligation to report hazards'
-    ```
-    """
+def classify_type(obligation_text: str) -> str:
     result = pipe(obligation_text)
     best = {"label": '', "score": -1.0}
 

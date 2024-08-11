@@ -14,21 +14,6 @@ loaded.to(device)
 pipe = TextClassificationPipeline(model=loaded, tokenizer=tokenizer, return_all_scores=True)
 
 def classify_obligations(sentence: str) -> str:
-    """Classify the sentences as obligations or not obligations.
-
-    :param sentences: list of sentences to be classified
-    :return: list of strings indicating whether the sentence is an obligation or not
-
-    Example:
-    ```
-        [
-            'Not Obligation',
-            'Obligation',
-            'Obligation',
-            'Lawmaker Obligation'
-        ]
-    ```
-    """
     result = pipe(sentence)
     best = {"label": '', "score": -1.0}
 
